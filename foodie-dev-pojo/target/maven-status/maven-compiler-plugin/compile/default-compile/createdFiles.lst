@@ -1,0 +1,16 @@
+com\yuseven\pojo\Carousel.class
+com\yuseven\pojo\Items.class
+com\yuseven\pojo\vo\SubCategoryVo.class
+com\yuseven\pojo\Category.class
+com\yuseven\pojo\ItemsParam.class
+com\yuseven\pojo\OrderItems.class
+com\yuseven\pojo\ItemsComments.class
+com\yuseven\pojo\ItemsSpec.class
+com\yuseven\pojo\vo\SimpleItemVO.class
+com\yuseven\pojo\bo\UserBo.class
+com\yuseven\pojo\Users.class
+com\yuseven\pojo\Orders.class
+com\yuseven\pojo\UserAddress.class
+com\yuseven\pojo\vo\CategoryVo.class
+com\yuseven\pojo\OrderStatus.class
+com\yuseven\pojo\vo\NewItemsVo.class

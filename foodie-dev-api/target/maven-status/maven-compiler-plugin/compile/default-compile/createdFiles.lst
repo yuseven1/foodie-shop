@@ -1,0 +1,6 @@
+com\yuseven\controller\IndexController.class
+com\yuseven\config\CorsConfig.class
+com\yuseven\Application.class
+com\yuseven\aspect\ServiceLogAspect.class
+com\yuseven\controller\PassportController.class
+com\yuseven\config\Swagger2.class

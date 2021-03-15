@@ -1,0 +1,13 @@
+com\yuseven\mapper\OrderItemsMapper.class
+com\yuseven\mapper\OrdersMapper.class
+com\yuseven\mapper\UsersMapper.class
+com\yuseven\mapper\CategoryMapperCustom.class
+com\yuseven\mapper\ItemsParamMapper.class
+com\yuseven\mapper\ItemsMapper.class
+com\yuseven\mapper\CategoryMapper.class
+com\yuseven\mapper\ItemsCommentsMapper.class
+com\yuseven\mapper\UserAddressMapper.class
+com\yuseven\mapper\ItemsSpecMapper.class
+com\yuseven\mapper\OrderStatusMapper.class
+com\yuseven\my\mapper\MyMapper.class
+com\yuseven\mapper\CarouselMapper.class
