@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yuseven.mapper.ItemsMapperCustom" >
+
+    <select id="queryItemComments" parameterType="map" resultType="com.yuseven.pojo.vo.ItemCommentVO">
+        SELECT
+            ic.comment_level as commentLevel,
+            ic.content as content,
+            ic.sepc_name as specName,
+            ic.created_time as createdTime,
+            u.face as userFace,
+            u.nickname as nickname
+        FROM items_comments ic
+        LEFT JOIN users u ON ic.user_id = u.id
+        WHERE ic.item_id = #{paramMap.itemId}
+        <if test="paramMap.commentLevel != null and paramMap.commentLevel != '' ">
+          AND ic.comment_level = #{paramMap.commentLevel}
+        </if>
+    </select>
+    <select id="searchItems" parameterType="map" resultType="com.yuseven.pojo.vo.SearchItemsVO">
+        SELECT
+            i.id as itemId,
+            i.item_name as itemName,
+            i.sell_counts as sellCounts,
+            ii.url as imgUrl,
+            tempSpec.price_discount as price
+        FROM items i
+        LEFT JOIN items_img ii ON i.id = ii.item_id
+        LEFT JOIN (SELECT item_id, MIN(price_discount) as price_discount FROM items_spec GROUP BY item_id) tempSpec
+        ON i.id = tempSpec.item_id
+        WHERE ii.is_main = 1
+        <if test="paramMap.keywords != null and paramMap.keywords != '' ">
+            AND i.item_name like '%${paramMap.keywords}%'
+        </if>
+        ORDER BY
+        <choose>
+            <when test="paramMap.sort == &quot;c&quot;">
+                i.sell_counts desc
+            </when>
+            <when test="paramMap.sort == &quot;p&quot;">
+                tempSpec.price_discount
+            </when>
+            <otherwise>
+                i.item_name desc
+            </otherwise>
+        </choose>
+    </select>
+    <!--k: 默认排序，根据name
+        c: 根据销量排序
+        p: 根据价格排序-->
+
+    <select id="searchItemsByThirdCat" parameterType="map" resultType="com.yuseven.pojo.vo.SearchItemsVO">
+        SELECT
+            i.id as itemId,
+            i.item_name as itemName,
+            i.sell_counts as sellCounts,
+            ii.url as imgUrl,
+            tempSpec.price_discount as price
+        FROM items i
+        LEFT JOIN items_img ii ON i.id = ii.item_id
+        LEFT JOIN (SELECT item_id, MIN(price_discount) as price_discount FROM items_spec GROUP BY item_id) tempSpec
+        ON i.id = tempSpec.item_id
+        WHERE ii.is_main = 1
+        AND i.cat_id = #{paramMap.catId}
+        ORDER BY
+        <choose>
+            <when test="paramMap.sort == &quot;c&quot;">
+                i.sell_counts desc
+            </when>
+            <when test="paramMap.sort == &quot;p&quot;">
+                tempSpec.price_discount
+            </when>
+            <otherwise>
+                i.item_name desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="queryItemsBySpecIds" parameterType="list" resultType="com.yuseven.pojo.vo.ShopcartVO">
+        SELECT
+            t_items.id as itemId,
+            t_items.item_name as itemName,
+            t_items_img.url as itemImgUrl,
+            t_items_sepc.id as specId,
+            t_items_sepc.`name` as specName,
+            t_items_sepc.price_discount as priceDiscount,
+            t_items_sepc.price_normal as priceNormal
+        FROM items_spec t_items_sepc
+        LEFT JOIN items t_items ON t_items.id = t_items_sepc.item_id
+        LEFT JOIN items_img t_items_img ON t_items_img.item_id = t_items.id
+        WHERE t_items_img.is_main = 1
+        AND t_items_sepc.id in
+          <foreach collection="paramList" index="index" item="specId" open="(" separator="," close=")">
+              #{specId}
+          </foreach>
+    </select>
+
+    <update id="discreaseItemSpecStock">
+        UPDATE
+          items_spec
+        SET
+          stock = stock - #{pendingCounts}
+        WHERE
+          id = #{specId}
+        AND
+          stock >= #{pendingCounts}
+    </update>
+
+</mapper>

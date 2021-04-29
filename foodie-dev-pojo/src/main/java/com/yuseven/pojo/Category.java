@@ -6,6 +6,7 @@ public class Category {
     /**
      * 主键
      */
+    @Id
     private Integer id;
 
     /**

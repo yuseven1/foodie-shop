@@ -7,6 +7,7 @@ public class Carousel {
     /**
      * 主键
      */
+    @Id
     private String id;
 
     /**

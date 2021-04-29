@@ -1,3 +1,5 @@
+com\yuseven\mapper\OrdersMapperCustom.class
+com\yuseven\mapper\ItemsMapperCustom.class
 com\yuseven\mapper\OrderItemsMapper.class
 com\yuseven\mapper\OrdersMapper.class
 com\yuseven\mapper\UsersMapper.class
@@ -8,6 +10,8 @@ com\yuseven\mapper\CategoryMapper.class
 com\yuseven\mapper\ItemsCommentsMapper.class
 com\yuseven\mapper\UserAddressMapper.class
 com\yuseven\mapper\ItemsSpecMapper.class
+com\yuseven\mapper\ItemsImgMapper.class
+com\yuseven\mapper\ItemsCommentsMapperCustom.class
 com\yuseven\mapper\OrderStatusMapper.class
 com\yuseven\my\mapper\MyMapper.class
 com\yuseven\mapper\CarouselMapper.class

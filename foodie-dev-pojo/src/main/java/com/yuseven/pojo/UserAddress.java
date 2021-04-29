@@ -8,6 +8,7 @@ public class UserAddress {
     /**
      * 地址主键id
      */
+    @Id
     private String id;
 
     /**
@@ -55,7 +56,7 @@ public class UserAddress {
      * 是否默认地址
      */
     @Column(name = "is_default")
-    private String isDefault;
+    private Integer isDefault;
 
     /**
      * 创建时间
@@ -236,7 +237,7 @@ public class UserAddress {
      *
      * @return is_default - 是否默认地址
      */
-    public String getIsDefault() {
+    public Integer getIsDefault() {
         return isDefault;
     }
 
@@ -245,7 +246,7 @@ public class UserAddress {
      *
      * @param isDefault 是否默认地址
      */
-    public void setIsDefault(String isDefault) {
+    public void setIsDefault(Integer isDefault) {
         this.isDefault = isDefault;
     }
 

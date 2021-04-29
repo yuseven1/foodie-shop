@@ -7,6 +7,7 @@ public class Orders {
     /**
      * 订单主键
      */
+    @Id
     private String id;
 
     /**
@@ -31,7 +32,7 @@ public class Orders {
      * 收货地址快照
      */
     @Column(name = "receiver_address")
-    private Integer receiverAddress;
+    private String receiverAddress;
 
     /**
      * 订单总价格
@@ -66,6 +67,7 @@ public class Orders {
     /**
      * 扩展字段
      */
+    @Column(name = "extend")
     private String extend;
 
     /**
@@ -169,7 +171,7 @@ public class Orders {
      *
      * @return receiver_address - 收货地址快照
      */
-    public Integer getReceiverAddress() {
+    public String getReceiverAddress() {
         return receiverAddress;
     }
 
@@ -178,7 +180,7 @@ public class Orders {
      *
      * @param receiverAddress 收货地址快照
      */
-    public void setReceiverAddress(Integer receiverAddress) {
+    public void setReceiverAddress(String receiverAddress) {
         this.receiverAddress = receiverAddress;
     }
 

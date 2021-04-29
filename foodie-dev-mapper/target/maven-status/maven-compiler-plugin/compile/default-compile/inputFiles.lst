@@ -1,6 +1,9 @@
 D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\CategoryMapperCustom.java
+D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\ItemsCommentsMapperCustom.java
 D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\OrderItemsMapper.java
 D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\OrdersMapper.java
+D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\OrdersMapperCustom.java
+D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\ItemsImgMapper.java
 D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\my\mapper\MyMapper.java
 D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\ItemsSpecMapper.java
 D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\UserAddressMapper.java
@@ -10,4 +13,5 @@ D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\Ca
 D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\CategoryMapper.java
 D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\UsersMapper.java
 D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\ItemsMapper.java
+D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\ItemsMapperCustom.java
 D:\IdeaProjects\foodie-dev\foodie-dev-mapper\src\main\java\com\yuseven\mapper\ItemsCommentsMapper.java

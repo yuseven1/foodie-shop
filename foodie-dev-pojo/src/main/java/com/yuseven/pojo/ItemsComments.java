@@ -8,6 +8,7 @@ public class ItemsComments {
     /**
      * id主键
      */
+    @Id
     private String id;
 
     /**

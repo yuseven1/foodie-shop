@@ -9,6 +9,7 @@ public class ItemsSpec {
     /**
      * 商品规格id
      */
+    @Id
     private String id;
 
     /**

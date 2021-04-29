@@ -20,6 +20,7 @@
       <module name="foodie-dev-mapper" target="1.8" />
       <module name="foodie-dev-pojo" target="1.8" />
       <module name="foodie-dev-service" target="1.8" />
+      <module name="foodie-payment" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

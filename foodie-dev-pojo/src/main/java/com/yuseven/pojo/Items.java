@@ -7,6 +7,7 @@ public class Items {
     /**
      * 商品主键id
      */
+    @Id
     private String id;
 
     /**

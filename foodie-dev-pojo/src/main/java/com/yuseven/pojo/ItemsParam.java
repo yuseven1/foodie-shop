@@ -8,6 +8,7 @@ public class ItemsParam {
     /**
      * 商品参数id
      */
+    @Id
     private String id;
 
     /**

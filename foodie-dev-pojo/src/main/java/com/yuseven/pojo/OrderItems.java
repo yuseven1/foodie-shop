@@ -7,6 +7,7 @@ public class OrderItems {
     /**
      * 主键id
      */
+    @Id
     private String id;
 
     /**

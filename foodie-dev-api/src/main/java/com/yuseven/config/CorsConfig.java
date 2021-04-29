@@ -24,6 +24,13 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         // 1.1 添加允许的访问源
         config.addAllowedOrigin("http://localhost:8080");
+        config.addAllowedOrigin("http://192.168.196.128:8080");
+        config.addAllowedOrigin("http://192.168.196.128:80");
+        config.addAllowedOrigin("http://shop.yuseven.com:8080");
+        config.addAllowedOrigin("http://shop.yuseven.com");
+        config.addAllowedOrigin("http://center.yuseven.com:8080");
+        config.addAllowedOrigin("http://center.yuseven.com");
+        config.addAllowedOrigin("*");
         // 1.2 设置是否发送cookies信息
         config.setAllowCredentials(true);
         // 1.3 设置允许的请求方式

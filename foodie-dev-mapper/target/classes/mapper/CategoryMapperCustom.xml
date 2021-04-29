@@ -70,6 +70,6 @@
     AND ii.is_main = 1
     ORDER BY i.created_time
     DESC
-    LIMIT 0,8
+    LIMIT 0,6
   </select>
 </mapper>

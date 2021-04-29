@@ -8,6 +8,8 @@ import com.yuseven.pojo.vo.NewItemsVo;
 import com.yuseven.service.CarouselService;
 import com.yuseven.service.CategoryService;
 import com.yuseven.utils.JSONResult;
+import com.yuseven.utils.JsonUtils;
+import com.yuseven.utils.RedisOperator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -17,7 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.spring.web.json.Json;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,12 +38,32 @@ public class IndexController {
     private CarouselService carouselService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private RedisOperator redisOperator;
 
     @ApiOperation(value = "获取首页轮播图列表", notes = "获取首页轮播图列表", httpMethod = "GET")
     @GetMapping("/carousel")
     public JSONResult carousel() {
-        List<Carousel> carousels = carouselService.queryAll(YesOrNoEnum.YES.type);
+        List<Carousel> carousels = new ArrayList<>();
+        String carousel = redisOperator.get("carousel");
+        if (StringUtils.isBlank(carousel)) {
+            carousels = carouselService.queryAll(YesOrNoEnum.YES.type);
+            redisOperator.set("carousel", JsonUtils.objectToJson(carousels));
+        } else {
+            carousels = JsonUtils.jsonToList(carousel, Carousel.class);
+        }
         return JSONResult.ok(carousels);
+
+        /**
+         *  疑问：一旦轮播图发生改变，缓存内容跟数据库不一致
+         *
+         *  1. 后台运营系统，一旦广告发生更改，就可以删除缓存，然后重置
+         *
+         *  2. 定时重置，比如每天凌晨三点
+         *
+         *  3. 每个轮播图都有可能是一个广告，每个广告都一个过期时间，过期了，再重置
+         *
+         */
     }
 
     /**
