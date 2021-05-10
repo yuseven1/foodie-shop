@@ -1,8 +1,11 @@
 package com.yuseven.service;
 
 import com.yuseven.pojo.OrderStatus;
+import com.yuseven.pojo.bo.ShopcartBo;
 import com.yuseven.pojo.bo.SubmitOrderBO;
 import com.yuseven.pojo.vo.OrderVO;
+
+import java.util.List;
 
 /**
  * @author Yu Qifeng
@@ -15,7 +18,7 @@ public interface OrderService {
      * 创建订单相关信息
      * @param submitOrderBO
      */
-    OrderVO createOreder(SubmitOrderBO submitOrderBO);
+    OrderVO createOreder(SubmitOrderBO submitOrderBO, List<ShopcartBo> shopcartList);
 
     /**
      * 修改订单状态
