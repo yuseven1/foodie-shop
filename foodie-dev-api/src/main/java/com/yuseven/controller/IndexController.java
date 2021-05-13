@@ -87,8 +87,25 @@ public class IndexController {
         if (rootCatId == null) {
             return JSONResult.errorMsg("分类不存在");
         }
-        List<CategoryVo> categoryVos = categoryService.getSubCatList(rootCatId);
-        return JSONResult.ok(categoryVos);
+        /*
+            查询的key在redis中不存在，对应的id在数据库中也不存在，此时被非法用户进行攻击，大量的请求会搭载数据库，
+            造成宕机，影响整个系统，这种现象称之为缓存穿透
+            解决方案：把空的数据也缓存，比如空的字符串，空对象，空数组
+         */
+        List<CategoryVo> categorys = new ArrayList<>();
+        String catesStr = redisOperator.get("subCat:" + rootCatId);
+        if (StringUtils.isBlank(catesStr)) {
+            categorys = categoryService.getSubCatList(rootCatId);
+            if (categorys != null && categorys.size()>0 ) {
+                redisOperator.set("subCat:" + rootCatId, JsonUtils.objectToJson(categorys));
+            } else {
+                redisOperator.set("subCat:" + rootCatId, JsonUtils.objectToJson(categorys), 5*60);
+            }
+        } else {
+            categorys = JsonUtils.jsonToList(catesStr, CategoryVo.class);
+        }
+//        List<CategoryVo> categoryVos = categoryService.getSubCatList(rootCatId);
+        return JSONResult.ok(categorys);
     }
 
     @ApiOperation(value = "查询首页每一个分类下的6条最新商品数据", notes = "查询首页每一个分类下的6条最新商品数据", httpMethod = "GET")

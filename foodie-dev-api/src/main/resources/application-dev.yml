@@ -7,10 +7,21 @@ spring:
     username: root
     password: root
   redis:
-    database: 1
-    host: 192.168.196.128
-    port: 6379
+    # redis 的单机单实例
+#    database: 1
+#    host: 192.168.196.128
+#    port: 6379
+#    password: yuseven
+    # redis 哨兵模式
+#    database: 1
+#    password: yuseven
+#    sentinel:
+#      master: yuseven-master
+#      nodes: 192.168.196.128:2639, 192.168.196.129:2639, 192.168.196.130:2639
+    # redis 集群
     password: yuseven
+    cluster:
+      nodes: 192.168.196.128:6379, 192.168.196.129:6379, 192.168.196.130:6379  # 配置6个节点，这里因为没有这么多虚拟机，没有完整
 
 mybatis:
   configuration:
